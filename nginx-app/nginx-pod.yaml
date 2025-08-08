@@ -14,10 +14,10 @@ spec:
     - name: ENVIRONMENT
       valueFrom:
         configMapKeyRef:
-          name: example-config
+          name: nginx-dev-config
           key: environment
     - name: LOG_LEVEL
       valueFrom:
         configMapKeyRef:
-          name: example-config
+          name: nginx-dev-config
           key: log_level

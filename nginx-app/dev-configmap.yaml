@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-dev-config
+  namespace: default
+data:
+  environment: dev
+  log_level: verbose
+
