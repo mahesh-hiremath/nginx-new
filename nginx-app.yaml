@@ -4,7 +4,7 @@ metadata:
   name: nginx-app
   namespace: argocd
 spec:
-  project: default
+  project: my-project
   source:
     repoURL: https://github.com/mahesh-hiremath/nginx-new.git
     targetRevision: HEAD
@@ -12,4 +12,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

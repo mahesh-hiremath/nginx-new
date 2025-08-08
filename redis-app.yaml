@@ -4,7 +4,7 @@ metadata:
   name: redis-app
   namespace: argocd
 spec:
-  project: default
+  project: my-project
   source:
     repoURL: https://github.com/mahesh-hiremath/nginx-new.git
     targetRevision: HEAD
