@@ -1,31 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
-   kind: ApplicationSet
-   metadata:
-     name: my-apps
-     namespace: argocd
-   spec:
-     generators:
-     - list:
-         elements:
-         - app: nginx-app
-           path: nginx-app
-           cluster: https://kubernetes.default.svc
-         - app: redis-app
-           path: redis-app
-           cluster: https://kubernetes.default.svc
-     template:
-       metadata:
-         name: "{{app}}"
-       spec:
-         project: my-project
-         source:
-           repoURL: https://github.com/mahesh-hiremath/nginx-new.git
-           targetRevision: HEAD
-           path: "{{path}}"
-         destination:
-           server: "{{cluster}}"
-           namespace: default
-         syncPolicy:
-           automated:
-             prune: true
-             selfHeal: true
+kind: ApplicationSet
+metadata:
+  name: my-apps
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - app: nginx-app
+        path: nginx-app
+      - app: redis-app
+        path: redis-app
+  template:
+    metadata:
+      name: "{{app}}"
+    spec:
+      project: my-project
+      source:
+        repoURL: https://github.com/mahesh-hiremath/nginx-new.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
